@@ -16,18 +16,17 @@ jobs:
 
       - name: Change to app directory
         run: |
-          cd D:\Personal\works\EsternUniversity-lecture\pythonAndDjango\django-markdown-editor
+          cd /home/ashik/selise/Projects/demoapp/
+          pwd # Print working directory for debugging
+          ls -la # List files for debugging
       - name: Checking out code
         run: |
           git stash
           git fetch
-          git pull
+          git pull origin main
 
       - name: Deploy with Docker Compose
         run: |
-          # Pull latest changes if any
-          docker-compose pull
-
           # Build and start the containers
           docker-compose up -d --build
 
