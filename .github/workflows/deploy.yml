@@ -1,0 +1,35 @@
+name: Deploy Docker Compose App
+
+on:
+  push:
+    branches: [main] # Change this to your default branch if different
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  deploy:
+    runs-on: self-hosted # This ensures the workflow runs on your machine
+
+    steps:
+      - name: Set up Docker Compose
+        run: |
+          docker-compose --version
+
+      - name: Change to app directory
+        run: |
+          cd D:\Personal\works\EsternUniversity-lecture\pythonAndDjango\django-markdown-editor
+      - name: Checking out code
+        run: |
+          git stash
+          git fetch
+          git pull
+
+      - name: Deploy with Docker Compose
+        run: |
+          # Pull latest changes if any
+          docker-compose pull
+
+          # Build and start the containers
+          docker-compose up -d --build
+
+          # Remove unused images
+          docker image prune -f
