@@ -21,6 +21,8 @@ jobs:
           ls -la # List files for debugging
       - name: Checking out code
         run: |
+          git config user.name "ashikMostofaTonmoy"
+          git config user.mail "tonmoy.ashik@gmail.com"
           git pull origin main
 
       - name: Deploy with Docker Compose
