@@ -4,7 +4,8 @@ services:
     build: .
     ports:
       - "8000:8000"
-    container_name: martor_demo
+    container_name: ostad_demo
+    image: ostad-demo-image
     restart: unless-stopped
 # version: "3.5"
 # services:
